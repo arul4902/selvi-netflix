@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SELVI — IN MY OWN FRAME | An Original Cinematic Experience</title>
+  
+  <!-- SEO & Open Graph Meta Tags -->
+  <meta name="description" content="Selvi — In My Own Frame. An immersive, cinematic streaming-style personal experience for Tamilselvi. Main character, her own pace, her own story.">
+  <meta name="keywords" content="Selvi, Tamilselvi, In My Own Frame, Cinematic Personal Website, Fashion, Travel, Reels, Varkala">
+  <meta name="author" content="Tamilselvi">
+  <meta property="og:title" content="SELVI — IN MY OWN FRAME">
+  <meta property="og:description" content="Sometimes being alone is peaceful. Main character. Her own pace. Her own story.">
+  <meta property="og:image" content="assets/selvi/portraits/selvi-heart-smile.png">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%23D4AF37'>✦</text></svg>">
+
+  <!-- Google Fonts Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+  <!-- Film Grain Overlay -->
+  <div class="film-grain-overlay" aria-hidden="true"></div>
+
+  <!-- Cinematic Letterbox Bars (Section 21) -->
+  <div class="cinematic-letterbox cinematic-letterbox-top" aria-hidden="true"></div>
+  <div class="cinematic-letterbox cinematic-letterbox-bottom" aria-hidden="true"></div>
+
+  <!-- Main Character Mode Active Indicator Badge -->
+  <div class="main-character-indicator" id="mainCharacterBadge">
+    <span class="pulsing-dot"></span>
+    <span>SELVI — NOW PLAYING</span>
+  </div>
+
+  <!-- ==========================================================================
+       Section 28: Cinematic Progress & Top Navigation Bar
+       ========================================================================== -->
+  <header class="cinematic-topbar" id="cinematicTopbar" role="banner">
+    <div class="topbar-brand">
+      <span class="topbar-monogram">S</span>
+      <span class="topbar-title">IN MY OWN FRAME</span>
+    </div>
+
+    <div class="topbar-stream-status">
+      <span class="status-label">NOW PLAYING:</span>
+      <span class="status-chapter" id="topbarCurrentChapter">SELF</span>
+      <div class="status-timeline" aria-label="Streaming Progress">
+        <div class="status-progress-fill" id="topbarProgressFill"></div>
+      </div>
+    </div>
+
+    <div class="topbar-actions">
+      <button class="topbar-btn js-mc-toggle" id="topbarMCToggle" title="Toggle Main Character Mode">
+        <span>✨</span><span>MAIN CHARACTER</span>
+      </button>
+      <button class="topbar-btn" id="topbarMyListBtn" title="View Bookmarks">
+        <span>＋</span><span>MY LIST</span>
+      </button>
+      <button class="topbar-btn js-solo-toggle" title="Toggle Peaceful Solo Mode">
+        <span>🌙</span><span>SOLO</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       Section 03: Cinematic Intro Screen
+       ========================================================================== -->
+  <section id="cinematicIntro" aria-label="Cinematic Prologue">
+    <div class="intro-content-container">
+      <p class="intro-line" id="introLine1">“Not every story begins<br>with a big moment.”</p>
+      <p class="intro-line" id="introLine2">“Some begin quietly.”</p>
+      <p class="intro-line" id="introLine3">“With someone learning<br>to enjoy her own company.”</p>
+
+      <div class="intro-reveal-block" id="introRevealBlock">
+        <div class="cinematic-monogram-wrapper">
+          <div class="monogram-glow-canvas"></div>
+          <svg class="monogram-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="monogramGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FFFFFF" />
+                <stop offset="50%" stop-color="#D4AF37" />
+                <stop offset="100%" stop-color="#801B36" />
+              </linearGradient>
+            </defs>
+            <!-- Original elegant serif 'S' monogram -->
+            <path class="monogram-path" d="M72 26 C64 16, 36 14, 30 28 C24 40, 76 44, 70 68 C64 84, 36 86, 26 74" />
+          </svg>
+          <div class="monogram-light-beam"></div>
+        </div>
+
+        <h1 class="intro-main-title">SELVI</h1>
+        <h2 class="intro-main-subtitle">IN MY OWN FRAME</h2>
+        <span class="intro-original-tag">A Tamilselvi Original</span>
+      </div>
+    </div>
+
+    <button class="intro-skip-btn" id="skipIntroBtn">SKIP INTRO ➔</button>
+  </section>
+
+  <!-- ==========================================================================
+       Section 04: Profile Selection With a Twist
+       ========================================================================== -->
+  <section id="profileSelectionSection" class="hidden-profile-gate" aria-label="Profile Selection Gate">
+    <div class="profile-backdrop-canvas" id="profileBackdropCanvas" style="background-image: url('assets/selvi/fashion/selvi-fairy-gown.png');"></div>
+
+    <div class="profile-container">
+      <div class="profile-header-tag">A TAMILSELVI EXPERIENCE</div>
+      <h2 class="profile-main-heading">Which Selvi are we watching today?</h2>
+
+      <div class="profile-cards-grid">
+        <!-- 1. The Traveller -->
+        <div class="profile-card" data-target="chapter-varkala" data-bg="assets/selvi/varkala/varkala-cliff-sunset.jpg" tabindex="0" role="button" aria-label="Watch The Traveller">
+          <div class="profile-avatar-frame">
+            <img class="profile-avatar-img" src="assets/selvi/varkala/varkala-palms.png" alt="Selvi The Traveller" loading="lazy">
+            <span class="profile-badge-pill">Wanderer Era</span>
+          </div>
+          <span class="profile-card-name">THE TRAVELLER ✈️</span>
+        </div>
+
+        <!-- 2. The Creator -->
+        <div class="profile-card" data-target="chapter-reels" data-bg="assets/selvi/fashion/selvi-pink-bougainvillea.png" tabindex="0" role="button" aria-label="Watch The Creator">
+          <div class="profile-avatar-frame">
+            <img class="profile-avatar-img" src="assets/selvi/portraits/selvi-heart-smile.png" alt="Selvi The Creator" loading="lazy">
+            <span class="profile-badge-pill">Reel Frame</span>
+          </div>
+          <span class="profile-card-name">THE CREATOR 🎬</span>
+        </div>
+
+        <!-- 3. The Fashion Girl -->
+        <div class="profile-card" data-target="chapter-lookbook" data-bg="assets/selvi/fashion/selvi-fairy-gown.png" tabindex="0" role="button" aria-label="Watch The Fashion Girl">
+          <div class="profile-avatar-frame">
+            <img class="profile-avatar-img" src="assets/selvi/fashion/selvi-purple-saree.png" alt="Selvi The Fashion Girl" loading="lazy">
+            <span class="profile-badge-pill">Editorial Looks</span>
+          </div>
+          <span class="profile-card-name">THE FASHION GIRL ✨</span>
+        </div>
+
+        <!-- 4. The Dreamer -->
+        <div class="profile-card" data-target="chapter-dreamboard" data-bg="assets/selvi/fashion/selvi-burgundy-cherry-2.png" tabindex="0" role="button" aria-label="Watch The Dreamer">
+          <div class="profile-avatar-frame">
+            <img class="profile-avatar-img" src="assets/selvi/fashion/selvi-fairy-gown.png" alt="Selvi The Dreamer" loading="lazy">
+            <span class="profile-badge-pill">Vision 2026+</span>
+          </div>
+          <span class="profile-card-name">THE DREAMER ♡</span>
+        </div>
+
+        <!-- 5. Just Selvi (Original Core) -->
+        <div class="profile-card just-selvi-highlight" data-target="chapter-hero" data-bg="assets/selvi/portraits/selvi-cottagecore-green.png" tabindex="0" role="button" aria-label="Watch Just Selvi">
+          <div class="profile-avatar-frame">
+            <img class="profile-avatar-img" src="assets/selvi/portraits/selvi-pink-post.png" alt="Just Selvi" loading="lazy">
+            <span class="profile-badge-pill">The Original</span>
+          </div>
+          <span class="profile-card-name">JUST SELVI ★</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Section 05: Main Hero Section
+       ========================================================================== -->
+  <main>
+    <section class="hero-streaming-section" id="chapter-hero" aria-label="Featured Original">
+      <div class="hero-background-canvas">
+        <img class="hero-bg-image" src="assets/selvi/portraits/selvi-heart-smile.png" alt="Selvi Tamilselvi" fetchpriority="high">
+        <div class="hero-vignette"></div>
+      </div>
+
+      <div class="hero-content-wrapper">
+        <div class="hero-badge-original">
+          <span>✦</span>
+          <span>A SELVI ORIGINAL</span>
+        </div>
+
+        <h1 class="hero-main-title">
+          SELVI
+          <span>IN MY OWN FRAME</span>
+        </h1>
+
+        <p class="hero-subtitle-block">
+          Travelling. Creating. Dressing up. Dreaming bigger.
+        </p>
+
+        <p class="hero-tagline-quote">
+          “Sometimes being alone is peaceful.”
+        </p>
+
+        <div class="hero-meta-row">
+          <span>Travel</span>
+          <span class="hero-meta-dot">•</span>
+          <span>Reels</span>
+          <span class="hero-meta-dot">•</span>
+          <span>Fashion</span>
+          <span class="hero-meta-dot">•</span>
+          <span>Dreams</span>
+          <span class="hero-meta-badge">NOW STREAMING</span>
+        </div>
+
+        <div class="hero-buttons-row">
+          <a href="#chapter-shelf" class="btn-primary-stream">
+            <span>▶</span>
+            <span>WATCH MY STORY</span>
+          </a>
+          <button class="btn-secondary-stream" id="btnMyListHero">
+            <span>＋</span>
+            <span>MY LIST</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 06: Continue Watching: Selvi Shelf
+         ========================================================================== -->
+    <section class="streaming-section-block" id="chapter-shelf" aria-label="Episodes Shelf">
+      <div class="section-shelf-header">
+        <h2 class="shelf-title">
+          <span>CONTINUE WATCHING</span>
+          <span style="font-family: var(--font-serif); font-style: italic; color: var(--accent-champagne); font-size: 1rem;">// Season 01</span>
+        </h2>
+        <span class="shelf-subtitle">10 Episodes • Available Now</span>
+      </div>
+
+      <div class="shelf-scroll-container">
+        <!-- EP 01 -->
+        <a href="#chapter-hero" class="episode-card">
+          <div class="episode-thumb-box">
+            <img class="episode-thumb-img" src="assets/selvi/portraits/selvi-heart-smile.png" alt="EP 01 Just Selvi" loading="lazy">
+            <div class="episode-play-overlay"><span class="play-circle-btn">▶</span></div>
+            <span class="episode-number-badge">EP 01</span>
+            <div class="episode-progress-bar"><div class="episode-progress-fill" style="width: 85%;"></div></div>
+          </div>
+          <div class="episode-info-box">
+            <div class="episode-meta-row"><span>45m</span><span>Original • Identity</span></div>
+            <h3 class="episode-title">Just Selvi</h3>
+            <p class="episode-desc">An unapologetic introduction to her world, her smile, and the rhythm of her everyday joy.</p>
+          </div>
+        </a>
+
+        <!-- EP 02 -->
+        <a href="#chapter-solo" class="episode-card">
+          <div class="episode-thumb-box">
+            <img class="episode-thumb-img" src="assets/selvi/portraits/selvi-black-ribbed-profile.png" alt="EP 02 Solo Mode" loading="lazy">
+            <div class="episode-play-overlay"><span class="play-circle-btn">▶</span></div>
+            <span class="episode-number-badge">EP 02</span>
+            <div class="episode-progress-bar"><div class="episode-progress-fill" style="width: 60%;"></div></div>
+          </div>
+          <div class="episode-info-box">
+            <div class="episode-meta-row"><span>30m</span><span>Stillness • Peace</span></div>
+            <h3 class="episode-title">Solo Mode</h3>
+            <p class="episode-desc">Stepping away from noise. Finding comfort, clarity, and peace in her own solitary space.</p>
+          </div>
+        </a>
+
+        <!-- EP 03 -->
+        <a href="#chapter-varkala" class="episode-card">
+          <div class="episode-thumb-box">
+            <img class="episode-thumb-img" src="assets/selvi/varkala/varkala-cliff-sunset.jpg" alt="EP 03 Varkala" loading="lazy">
+            <div class="episode-play-overlay"><span class="play-circle-btn">▶</span></div>
+            <span class="episode-number-badge">EP 03</span>
+            <div class="episode-progress-bar"><div class="episode-progress-fill" style="width: 45%;"></div></div>
+          </div>
+          <div class="episode-info-box">
+            <div class="episode-meta-row"><span>52m</span><span>Travel • Ocean</span></div>
+            <h3 class="episode-title">Varkala</h3>
+            <p class="episode-desc">Where crimson cliffs meet the Arabian waves. Time moving at the pace of the tides.</p>
+          </div>
+        </a>
+
+        <!-- EP 04 -->
+        <a href="#chapter-reels" class="episode-card">
+          <div class="episode-thumb-box">
+            <img class="episode-thumb-img" src="assets/selvi/fashion/selvi-pink-mesh.png" alt="EP 04 Reel Life" loading="lazy">
+            <div class="episode-play-overlay"><span class="play-circle-btn">▶</span></div>
+            <span class="episode-number-badge">EP 04</span>
+            <div class="episode-progress-bar"><div class="episode-progress-fill" style="width: 90%;"></div></div>
+          </div>
+          <div class="episode-info-box">
+            <div class="episode-meta-row"><span>28m</span><span>Creator • Frames</span></div>
+            <h3 class="episode-title">Reel Life</h3>
+            <p class="episode-desc">Every short video is a framed mood: outfit check, camera roll curation, rhythmic cuts, and repeat.</p>
+          </div>
+        </a>
+
+        <!-- EP 05 -->
+        <a href="#chapter-lookbook" class="episode-card">
+          <div class="episode-thumb-box">
+            <img class="episode-thumb-img" src="assets/selvi/fashion/selvi-purple-saree.png" alt="EP 05 Different Looks, Same Me" loading="lazy">
+            <div class="episode-play-overlay"><span class="play-circle-btn">▶</span></div>
+            <span class="episode-number-badge">EP 05</span>
+            <div class="episode-progress-bar"><div class="episode-progress-fill" style="width: 75%;"></div></div>
+          </div>
+          <div class="episode-info-box">
+            <div class="episode-meta-row"><span>38m</span><span>Fashion • Editorial</span></div>
+            <h3 class="episode-title">Different Looks, Same Me</h3>
+            <p class="episode-desc">Dressing up as self-expression. From silk sarees to corset skirts, bold silhouettes, unchanged soul.</p>
+          </div>
+        </a>
+
+        <!-- EP 06 -->
+        <a href="#chapter-college" class="episode-card">
+          <div class="episode-thumb-box">
+            <img class="episode-thumb-img" src="assets/selvi/college/college-archive-1.png" alt="EP 06 College Archives" loading="lazy">
+            <div class="episode-play-overlay"><span class="play-circle-btn">▶</span></div>
+            <span class="episode-number-badge">EP 06</span>
+            <div class="episode-progress-bar"><div class="episode-progress-fill" style="width: 30%;"></div></div>
+          </div>
+          <div class="episode-info-box">
+            <div class="episode-meta-row"><span>42m</span><span>Memories • Film</span></div>
+            <h3 class="episode-title">College Archives</h3>
+            <p class="episode-desc">Unplanned snapshots and quiet laughter. Chapters that require no explanation, just bring a smile.</p>
+          </div>
+        </a>
+
+        <!-- EP 07 -->
+        <a href="#chapter-chess" class="episode-card">
+          <div class="episode-thumb-box">
+            <img class="episode-thumb-img" src="assets/selvi/portraits/selvi-black-ribbed-tying-hair.png" alt="EP 07 Checkmate" loading="lazy">
+            <div class="episode-play-overlay"><span class="play-circle-btn">▶</span></div>
+            <span class="episode-number-badge">EP 07</span>
+            <div class="episode-progress-bar"><div class="episode-progress-fill" style="width: 15%;"></div></div>
+          </div>
+          <div class="episode-info-box">
+            <div class="episode-meta-row"><span>24m</span><span>Mind • Strategy</span></div>
+            <h3 class="episode-title">Checkmate</h3>
+            <p class="episode-desc">Thinking in angles and patience. Every move on the board mirrors how life is quietly designed.</p>
+          </div>
+        </a>
+
+        <!-- EP 08 -->
+        <a href="#chapter-taste" class="episode-card">
+          <div class="episode-thumb-box">
+            <img class="episode-thumb-img" src="assets/selvi/fashion/selvi-brown-geometric.png" alt="EP 08 Things I Love" loading="lazy">
+            <div class="episode-play-overlay"><span class="play-circle-btn">▶</span></div>
+            <span class="episode-number-badge">EP 08</span>
+            <div class="episode-progress-bar"><div class="episode-progress-fill" style="width: 65%;"></div></div>
+          </div>
+          <div class="episode-info-box">
+            <div class="episode-meta-row"><span>35m</span><span>Favorites • Taste</span></div>
+            <h3 class="episode-title">Things I Love</h3>
+            <p class="episode-desc">Biryani warmth, Vijay Sethupathi screen presence, Tamil melodies on loop, and quiet seaside dreams.</p>
+          </div>
+        </a>
+
+        <!-- EP 09 -->
+        <a href="#chapter-dreamboard" class="episode-card">
+          <div class="episode-thumb-box">
+            <img class="episode-thumb-img" src="assets/selvi/fashion/selvi-fairy-gown.png" alt="EP 09 Dreaming Bigger" loading="lazy">
+            <div class="episode-play-overlay"><span class="play-circle-btn">▶</span></div>
+            <span class="episode-number-badge">EP 09</span>
+            <div class="episode-progress-bar"><div class="episode-progress-fill" style="width: 10%;"></div></div>
+          </div>
+          <div class="episode-info-box">
+            <div class="episode-meta-row"><span>50m</span><span>Aspirations • Future</span></div>
+            <h3 class="episode-title">Dreaming Bigger</h3>
+            <p class="episode-desc">Stepping toward the spotlight. Modelling dreams and the blueprint of building a business from scratch.</p>
+          </div>
+        </a>
+
+        <!-- EP 10 -->
+        <a href="#chapter-future" class="episode-card">
+          <div class="episode-thumb-box">
+            <img class="episode-thumb-img" src="assets/selvi/fashion/selvi-burgundy-cherry-2.png" alt="EP 10 Still Becoming" loading="lazy">
+            <div class="episode-play-overlay"><span class="play-circle-btn">▶</span></div>
+            <span class="episode-number-badge">EP 10</span>
+            <div class="episode-progress-bar"><div class="episode-progress-fill" style="width: 5%;"></div></div>
+          </div>
+          <div class="episode-info-box">
+            <div class="episode-meta-row"><span>Finale</span><span>Climax • Horizon</span></div>
+            <h3 class="episode-title">Still Becoming</h3>
+            <p class="episode-desc">The reminder to her future self: Keep going, your dreams are waiting. The story continues.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 07: “No Big Moment” (Emotional Pivot)
+         ========================================================================== -->
+    <section class="no-big-moment-section" id="chapter-nobigmoment" aria-label="The Real Story">
+      <div class="narrative-container">
+        <h2 class="narrative-prompt">“Favourite memory?”</h2>
+        <div class="narrative-dots" aria-hidden="true">• • •</div>
+        <p class="narrative-answer">“I don't have one.”</p>
+
+        <div class="narrative-pivot-box">
+          <p class="narrative-pivot-text">“Maybe that's okay.”</p>
+          <p class="narrative-pivot-highlight">
+            “My favourite chapter might not have happened yet.”
+          </p>
+        </div>
+
+        <div class="narrative-grid-photos">
+          <div class="narrative-small-photo">
+            <img src="assets/selvi/portraits/selvi-pink-post.png" alt="Quiet smile" loading="lazy">
+          </div>
+          <div class="narrative-small-photo">
+            <img src="assets/selvi/fashion/selvi-blue-croptop.png" alt="Everyday moment" loading="lazy">
+          </div>
+          <div class="narrative-small-photo">
+            <img src="assets/selvi/portraits/selvi-flowers-back.png" alt="Looking outward" loading="lazy">
+          </div>
+          <div class="narrative-small-photo">
+            <img src="assets/selvi/fashion/selvi-cream-casual.png" alt="Casual stride" loading="lazy">
+          </div>
+        </div>
+
+        <p class="narrative-conclusion">“Still creating memories.”</p>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 08: Solo Mode (Signature Section)
+         ========================================================================== -->
+    <section class="solo-mode-section" id="chapter-solo" aria-label="Solo Mode Sanctuary">
+      <div class="solo-ambient-glow" aria-hidden="true"></div>
+
+      <div class="solo-container">
+        <div class="solo-visual-wrapper">
+          <div class="solo-portrait-frame">
+            <img class="solo-portrait-img" src="assets/selvi/portraits/selvi-black-ribbed-profile.png" alt="Selvi enjoying her own company" loading="lazy">
+          </div>
+        </div>
+
+        <div class="solo-text-content">
+          <div class="solo-toggle-row">
+            <button class="solo-toggle-btn js-solo-toggle" role="switch" aria-checked="false">
+              <span class="toggle-switch-icon"></span>
+              <span>SOLO MODE</span>
+            </button>
+          </div>
+
+          <h2 class="solo-heading">SOLO MODE</h2>
+          <p class="solo-core-quote">“Sometimes being alone is peaceful.”</p>
+          <p class="solo-narration">
+            Not lonely. Just comfortable with my own company.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 09: Varkala Escape
+         ========================================================================== -->
+    <section class="varkala-chapter-section" id="chapter-varkala" aria-label="Varkala Travel Chapter">
+      <div class="varkala-header-banner">
+        <div class="varkala-loc-badge">📍 Varkala, Kerala • 8.7379° N, 76.7163° E</div>
+        <h2 class="varkala-main-title">VARKALA ESCAPE</h2>
+        <p class="varkala-quote-line">“Some places feel like a different version of you.”</p>
+        <div class="varkala-actions-row">
+          <button class="btn-varkala-escape" id="btnVarkalaEscape">
+            <span>🌊</span>
+            <span>ESCAPE MODE</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="varkala-filmstrip-wrapper">
+        <div class="filmstrip-scroll">
+          <div class="filmstrip-frame">
+            <div class="filmstrip-img-box">
+              <img class="filmstrip-img" src="assets/selvi/varkala/varkala-cliff-sunset.jpg" alt="Varkala red cliffs and sea sunset" loading="lazy">
+            </div>
+            <div class="filmstrip-meta">
+              <span class="filmstrip-tag">Laterite Cliffs & Arabian Horizon</span>
+              <p class="filmstrip-caption">Where crimson precipices face the golden dusk tide.</p>
+            </div>
+          </div>
+
+          <div class="filmstrip-frame">
+            <div class="filmstrip-img-box">
+              <img class="filmstrip-img" src="assets/selvi/varkala/varkala-palms.png" alt="Selvi in palm shirt" loading="lazy">
+            </div>
+            <div class="filmstrip-meta">
+              <span class="filmstrip-tag">Coastal Frame</span>
+              <p class="filmstrip-caption">Red palm prints and ocean air.</p>
+            </div>
+          </div>
+
+          <div class="filmstrip-frame">
+            <div class="filmstrip-img-box">
+              <img class="filmstrip-img" src="assets/selvi/varkala/varkala-beach-waves.jpg" alt="Varkala beach tide rolling" loading="lazy">
+            </div>
+            <div class="filmstrip-meta">
+              <span class="filmstrip-tag">Arabian Sea Waves</span>
+              <p class="filmstrip-caption">Tidal cadence washing the shore in peace.</p>
+            </div>
+          </div>
+
+          <div class="filmstrip-frame">
+            <div class="filmstrip-img-box">
+              <img class="filmstrip-img" src="assets/selvi/varkala/varkala-solitude.png" alt="Selvi calm profile" loading="lazy">
+            </div>
+            <div class="filmstrip-meta">
+              <span class="filmstrip-tag">Solitary Horizon</span>
+              <p class="filmstrip-caption">Listening to the rhythm of the ocean wind.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 10: Reel Life (Editing Room Aesthetic)
+         ========================================================================== -->
+    <section class="reels-editor-section" id="chapter-reels" aria-label="Reels Creation Suite">
+      <div class="creator-suite-header">
+        <span class="creator-label">CREATOR EDITING SUITE</span>
+        <h2 class="creator-title">LIFE, BUT MAKE IT A REEL.</h2>
+        <span class="creator-microcopy">Camera roll → edit → post → repeat.</span>
+      </div>
+
+      <div class="reels-grid-container">
+        <!-- Reel 01 -->
+        <div class="reel-card-item" data-reel-src="assets/selvi/reels/reel_07.mp4" data-reel-caption="Pink Bloom Mood">
+          <video class="reel-video-preview" src="assets/selvi/reels/reel_07.mp4" loop muted playsinline></video>
+          <div class="reel-overlay-content">
+            <span class="reel-header-badge">REEL 01</span>
+            <div class="reel-center-play">▶</div>
+            <div class="reel-footer-meta">
+              <p class="reel-caption-title">Pink Bloom Mood</p>
+              <span class="reel-sound-tag">🎵 Trending Sound</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reel 02 -->
+        <div class="reel-card-item" data-reel-src="assets/selvi/reels/reel_08.mp4" data-reel-caption="Saree Aesthetic Frame">
+          <video class="reel-video-preview" src="assets/selvi/reels/reel_08.mp4" loop muted playsinline></video>
+          <div class="reel-overlay-content">
+            <span class="reel-header-badge">REEL 02</span>
+            <div class="reel-center-play">▶</div>
+            <div class="reel-footer-meta">
+              <p class="reel-caption-title">Saree Aesthetic Frame</p>
+              <span class="reel-sound-tag">🎵 Silk Glow</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reel 03 -->
+        <div class="reel-card-item" data-reel-src="assets/selvi/reels/reel_09.mp4" data-reel-caption="Confidence & Rose Hue">
+          <video class="reel-video-preview" src="assets/selvi/reels/reel_09.mp4" loop muted playsinline></video>
+          <div class="reel-overlay-content">
+            <span class="reel-header-badge">REEL 03</span>
+            <div class="reel-center-play">▶</div>
+            <div class="reel-footer-meta">
+              <p class="reel-caption-title">Confidence & Rose Hue</p>
+              <span class="reel-sound-tag">🎵 Editorial Reel</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reel 04 -->
+        <div class="reel-card-item" data-reel-src="assets/selvi/reels/reel_01.mp4" data-reel-caption="Quiet Motion Story">
+          <video class="reel-video-preview" src="assets/selvi/reels/reel_01.mp4" loop muted playsinline></video>
+          <div class="reel-overlay-content">
+            <span class="reel-header-badge">REEL 04</span>
+            <div class="reel-center-play">▶</div>
+            <div class="reel-footer-meta">
+              <p class="reel-caption-title">Quiet Motion Story</p>
+              <span class="reel-sound-tag">🎵 Style Reel</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reel 05 -->
+        <div class="reel-card-item" data-reel-src="assets/selvi/reels/reel_02.mp4" data-reel-caption="Daylight Curations">
+          <video class="reel-video-preview" src="assets/selvi/reels/reel_02.mp4" loop muted playsinline></video>
+          <div class="reel-overlay-content">
+            <span class="reel-header-badge">REEL 05</span>
+            <div class="reel-center-play">▶</div>
+            <div class="reel-footer-meta">
+              <p class="reel-caption-title">Daylight Curations</p>
+              <span class="reel-sound-tag">🎵 Creator Life</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reel 06 -->
+        <div class="reel-card-item" data-reel-src="assets/selvi/reels/reel_03.mp4" data-reel-caption="Vibes & Transitions">
+          <video class="reel-video-preview" src="assets/selvi/reels/reel_03.mp4" loop muted playsinline></video>
+          <div class="reel-overlay-content">
+            <span class="reel-header-badge">REEL 06</span>
+            <div class="reel-center-play">▶</div>
+            <div class="reel-footer-meta">
+              <p class="reel-caption-title">Vibes & Transitions</p>
+              <span class="reel-sound-tag">🎵 Behind The Scenes</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="creator-timeline-bar">
+        <div class="timeline-info">
+          <span>TIMELINE</span>
+          <span style="color: var(--accent-champagne);">00:01:24:18</span>
+        </div>
+        <div class="timeline-ticks">
+          <div class="timeline-needle"></div>
+        </div>
+        <div class="timeline-info">
+          <span>9:16 VERTICAL</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 11 & 12: Digital Lookbook & Virtual Wardrobe
+         ========================================================================== -->
+    <section class="lookbook-section" id="chapter-lookbook" aria-label="Fashion Lookbook & Wardrobe">
+      <div class="lookbook-header-editorial">
+        <span class="lookbook-edition-tag">EDITORIAL ARCHIVES // ISSUE 01</span>
+        <h2 class="lookbook-title">DIFFERENT LOOKS.<br>SAME SELVI.</h2>
+        <p class="lookbook-subtitle">“I love dressing up and trying different looks.”</p>
+      </div>
+
+      <!-- Section 12: Virtual Wardrobe Interactive -->
+      <div class="virtual-wardrobe-container">
+        <div class="wardrobe-central-display">
+          <img class="wardrobe-central-img" id="wardrobeCentralImg" src="assets/selvi/fashion/selvi-purple-saree.png" alt="Selected Wardrobe Look">
+          <div class="wardrobe-editorial-watermark">SELVI</div>
+        </div>
+
+        <div class="wardrobe-controls-panel">
+          <span class="wardrobe-label">VIRTUAL WARDROBE // PICK A LOOK</span>
+          <div class="wardrobe-look-number" id="wardrobeLookNumber">LOOK 01</div>
+          <h3 class="wardrobe-look-name" id="wardrobeLookName">The Regal Silks</h3>
+          <p class="wardrobe-look-quote" id="wardrobeLookQuote">Timeless silk drape, silver jhumkas, and effortless poise.</p>
+
+          <div class="wardrobe-palette-row" id="wardrobePaletteRow">
+            <span class="palette-swatch" style="background-color: #4a154b;"></span>
+            <span class="palette-swatch" style="background-color: #9d4edd;"></span>
+            <span class="palette-swatch" style="background-color: #d4af37;"></span>
+          </div>
+
+          <div class="wardrobe-thumbnails-shelf">
+            <button class="wardrobe-thumb-btn active" data-index="0" title="Look 01: Saree">
+              <img src="assets/selvi/fashion/selvi-purple-saree.png" alt="Thumb Saree">
+            </button>
+            <button class="wardrobe-thumb-btn" data-index="1" title="Look 02: Cherry Corset">
+              <img src="assets/selvi/fashion/selvi-burgundy-cherry-2.png" alt="Thumb Corset">
+            </button>
+            <button class="wardrobe-thumb-btn" data-index="2" title="Look 03: Fairy Gown">
+              <img src="assets/selvi/fashion/selvi-fairy-gown.png" alt="Thumb Gown">
+            </button>
+            <button class="wardrobe-thumb-btn" data-index="3" title="Look 04: Pink Cowl">
+              <img src="assets/selvi/portraits/selvi-heart-smile.png" alt="Thumb Pink">
+            </button>
+            <button class="wardrobe-thumb-btn" data-index="4" title="Look 05: Cottagecore">
+              <img src="assets/selvi/portraits/selvi-cottagecore-green.png" alt="Thumb Cottagecore">
+            </button>
+            <button class="wardrobe-thumb-btn" data-index="5" title="Look 06: Lace Crop">
+              <img src="assets/selvi/portraits/selvi-black-ribbed-tying-hair.png" alt="Thumb Lace">
+            </button>
+            <button class="wardrobe-thumb-btn" data-index="6" title="Look 07: Palm Resort">
+              <img src="assets/selvi/fashion/selvi-red-palmtree.png" alt="Thumb Palms">
+            </button>
+            <button class="wardrobe-thumb-btn" data-index="7" title="Look 08: Purple Salwar">
+              <img src="assets/selvi/fashion/selvi-purple-salwar.png" alt="Thumb Salwar">
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 11: Digital Magazine Covers Grid -->
+      <div class="lookbook-editorial-grid">
+        <!-- Cover 01 -->
+        <div class="look-cover-card" data-look-img="assets/selvi/fashion/selvi-purple-saree.png" data-look-title="The Regal Silks" data-look-category="Traditional Elegance">
+          <div class="look-backdrop-typo">VOGUE</div>
+          <div class="look-photo-container">
+            <img class="look-photo-img" src="assets/selvi/fashion/selvi-purple-saree.png" alt="Silk Saree Cover" loading="lazy">
+          </div>
+          <div class="look-gradient-scrim"></div>
+          <div class="look-card-editorial-footer">
+            <div class="look-meta-tag">LOOK 01 • SILK DRAPES</div>
+            <h3 class="look-title-main">The Regal Silks</h3>
+            <span class="btn-view-look">VIEW LOOK ➔</span>
+          </div>
+        </div>
+
+        <!-- Cover 02 -->
+        <div class="look-cover-card" data-look-img="assets/selvi/fashion/selvi-burgundy-cherry-2.png" data-look-title="Cherry Corset Reverie" data-look-category="Modern Romantic">
+          <div class="look-backdrop-typo">CHIC</div>
+          <div class="look-photo-container">
+            <img class="look-photo-img" src="assets/selvi/fashion/selvi-burgundy-cherry-2.png" alt="Corset Cherry Cover" loading="lazy">
+          </div>
+          <div class="look-gradient-scrim"></div>
+          <div class="look-card-editorial-footer">
+            <div class="look-meta-tag">LOOK 02 • WINE & WHITE</div>
+            <h3 class="look-title-main">Cherry Corset Reverie</h3>
+            <span class="btn-view-look">VIEW LOOK ➔</span>
+          </div>
+        </div>
+
+        <!-- Cover 03 -->
+        <div class="look-cover-card" data-look-img="assets/selvi/fashion/selvi-fairy-gown.png" data-look-title="Tulle Fairytale" data-look-category="Dream Sequence">
+          <div class="look-backdrop-typo">HAUTE</div>
+          <div class="look-photo-container">
+            <img class="look-photo-img" src="assets/selvi/fashion/selvi-fairy-gown.png" alt="Fairytale Gown Cover" loading="lazy">
+          </div>
+          <div class="look-gradient-scrim"></div>
+          <div class="look-card-editorial-footer">
+            <div class="look-meta-tag">LOOK 03 • BUTTERFLY TULLE</div>
+            <h3 class="look-title-main">Tulle Fairytale</h3>
+            <span class="btn-view-look">VIEW LOOK ➔</span>
+          </div>
+        </div>
+
+        <!-- Cover 04 -->
+        <div class="look-cover-card" data-look-img="assets/selvi/fashion/selvi-red-palmtree.png" data-look-title="Earth & Palms" data-look-category="Resort Aesthetic">
+          <div class="look-backdrop-typo">RESORT</div>
+          <div class="look-photo-container">
+            <img class="look-photo-img" src="assets/selvi/fashion/selvi-red-palmtree.png" alt="Palm Shirt Cover" loading="lazy">
+          </div>
+          <div class="look-gradient-scrim"></div>
+          <div class="look-card-editorial-footer">
+            <div class="look-meta-tag">LOOK 04 • CRIMSON BOTANIC</div>
+            <h3 class="look-title-main">Earth & Palms</h3>
+            <span class="btn-view-look">VIEW LOOK ➔</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 13: College Archives
+         ========================================================================== -->
+    <section class="college-archives-section" id="chapter-college" aria-label="College Memories">
+      <div class="college-section-header">
+        <span class="archive-timestamp-tag">REC ● ARCHIVE 00:00:00</span>
+        <h2 class="college-title">FROM THE ARCHIVES<br><span style="font-family: var(--font-serif); font-style: italic; color: var(--accent-champagne); font-size: 0.7em;">COLLEGE MEMORIES</span></h2>
+        <p class="college-copy-quote">“Some chapters don't need explaining. They just make you smile.”</p>
+      </div>
+
+      <div class="college-film-strip-grid">
+        <div class="college-archive-card">
+          <div class="tape-strip"></div>
+          <div class="archive-photo-frame">
+            <img src="assets/selvi/college/college-archive-1.png" alt="Campus Archive A" loading="lazy">
+          </div>
+          <div class="archive-card-caption">
+            <span>FRAME // 01</span>
+            <span>UNFILTERED LIGHT</span>
+          </div>
+        </div>
+
+        <div class="college-archive-card">
+          <div class="tape-strip"></div>
+          <div class="archive-photo-frame">
+            <img src="assets/selvi/college/college-archive-2.png" alt="Campus Archive B" loading="lazy">
+          </div>
+          <div class="archive-card-caption">
+            <span>FRAME // 02</span>
+            <span>QUIET SMILES</span>
+          </div>
+        </div>
+
+        <div class="college-archive-card">
+          <div class="tape-strip"></div>
+          <div class="archive-photo-frame">
+            <img src="assets/selvi/college/college-archive-3.png" alt="Campus Archive C" loading="lazy">
+          </div>
+          <div class="archive-card-caption">
+            <span>FRAME // 03</span>
+            <span>BETWEEN CLASSES</span>
+          </div>
+        </div>
+
+        <div class="college-archive-card">
+          <div class="tape-strip"></div>
+          <div class="archive-photo-frame">
+            <img src="assets/selvi/college/college-archive-4.png" alt="Campus Archive D" loading="lazy">
+          </div>
+          <div class="archive-card-caption">
+            <span>FRAME // 04</span>
+            <span>SUNLIT STEPS</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 14: Chess: Think Differently
+         ========================================================================== -->
+    <section class="chess-section" id="chapter-chess" aria-label="Chess Strategy Chapter">
+      <div class="chess-container">
+        <div class="chess-text-content">
+          <span class="chess-tag">MINDFUL STRATEGY</span>
+          <h2 class="chess-title">ONE MOVE AT A TIME.</h2>
+          <p class="chess-quote-statement">“Every move changes what comes next.”</p>
+          <p class="chess-narrative-copy">
+            Quiet patience, anticipation, and knowing when to claim the square. In chess as in ambition: every strategic advance rewrites the horizon.
+          </p>
+
+          <button class="btn-make-move" id="btnMakeMove">
+            <span>MAKE A MOVE</span>
+            <span>♟️</span>
+          </button>
+
+          <div class="chess-move-reveal-toast" id="chessMoveToast">
+            “Next move: Dream bigger.”
+          </div>
+        </div>
+
+        <div class="chess-board-wrapper">
+          <div class="chess-3d-board" id="chess3dBoard" aria-label="3D Chess Board Demonstration">
+            <!-- 64 Squares generated dynamically or with semantic markup -->
+            <!-- Row 1 -->
+            <div class="chess-square light"></div><div class="chess-square dark"></div><div class="chess-square light"></div><div class="chess-square dark"><span class="chess-piece king-burgundy">♚</span></div><div class="chess-square light"></div><div class="chess-square dark"></div><div class="chess-square light"></div><div class="chess-square dark"></div>
+            <!-- Row 2 -->
+            <div class="chess-square dark"></div><div class="chess-square light"></div><div class="chess-square dark"></div><div class="chess-square light"></div><div class="chess-square dark"></div><div class="chess-square light"></div><div class="chess-square dark"></div><div class="chess-square light"></div>
+            <!-- Row 3 -->
+            <div class="chess-square light"></div><div class="chess-square dark"></div><div class="chess-square light"></div><div class="chess-square dark"></div><div class="chess-square light"></div><div class="chess-square dark"></div><div class="chess-square light"></div><div class="chess-square dark"></div>
+            <!-- Row 4 -->
+            <div class="chess-square dark"></div><div class="chess-square light"></div><div class="chess-square dark"></div><div class="chess-square light highlight-move"></div><div class="chess-square dark"></div><div class="chess-square light"></div><div class="chess-square dark"></div><div class="chess-square light"></div>
+            <!-- Row 5 -->
+            <div class="chess-square light"></div><div class="chess-square dark"></div><div class="chess-square light"></div><div class="chess-square dark"></div><div class="chess-square light"></div><div class="chess-square dark"></div><div class="chess-square light"></div><div class="chess-square dark"></div>
+            <!-- Row 6 -->
+            <div class="chess-square dark"></div><div class="chess-square light"></div><div class="chess-square dark"></div><div class="chess-square light"></div><div class="chess-square dark"></div><div class="chess-square light"></div><div class="chess-square dark"></div><div class="chess-square light"></div>
+            <!-- Row 7 -->
+            <div class="chess-square light"></div><div class="chess-square dark"></div><div class="chess-square light"></div><div class="chess-square dark"></div><div class="chess-square light"></div><div class="chess-square dark"></div><div class="chess-square light"></div><div class="chess-square dark"></div>
+            <!-- Row 8 (White Queen Base) -->
+            <div class="chess-square dark"></div><div class="chess-square light"></div><div class="chess-square dark"></div><div class="chess-square light"><span class="chess-piece queen-gold" id="interactiveChessPiece">♛</span></div><div class="chess-square dark"></div><div class="chess-square light"></div><div class="chess-square dark"></div><div class="chess-square light"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 15: Taste of Selvi (Selvi's Picks)
+         ========================================================================== -->
+    <section class="taste-picks-section" id="chapter-taste" aria-label="Selvi's Picks">
+      <div class="section-shelf-header" style="max-width: var(--max-w-content); margin: 0 auto 36px;">
+        <h2 class="shelf-title">
+          <span>SELVI'S PICKS</span>
+          <span style="font-family: var(--font-serif); font-style: italic; color: var(--accent-champagne); font-size: 1rem;">// Curated Favourites</span>
+        </h2>
+        <span class="shelf-subtitle">What Brings Joy</span>
+      </div>
+
+      <div class="taste-shelf-cards">
+        <!-- Biryani -->
+        <div class="taste-pick-card" data-category="food">
+          <span class="taste-pick-emoji">🍛</span>
+          <span class="taste-pick-category">Comfort Food</span>
+          <h3 class="taste-pick-title">BIRYANI</h3>
+          <p class="taste-pick-microcopy">The ultimate comfort. Rich fragrant spices, tender warmth, and pure culinary happiness.</p>
+        </div>
+
+        <!-- Tamil Songs -->
+        <div class="taste-pick-card" data-category="music">
+          <span class="taste-pick-emoji">🎵</span>
+          <span class="taste-pick-category">Soundtrack</span>
+          <h3 class="taste-pick-title">TAMIL SONGS</h3>
+          <p class="taste-pick-microcopy">Soul-stirring rhythms, nostalgic melodies, and evergreen lyrics on constant repeat.</p>
+        </div>
+
+        <!-- Vijay Sethupathi Movies -->
+        <div class="taste-pick-card" data-category="cinema">
+          <span class="taste-pick-emoji">🎬</span>
+          <span class="taste-pick-category">Cinema</span>
+          <h3 class="taste-pick-title">VIJAY SETHUPATHI MOVIES</h3>
+          <p class="taste-pick-microcopy">Effortless authenticity, magnetic screen presence, and character-driven storytelling.</p>
+        </div>
+
+        <!-- Varkala -->
+        <div class="taste-pick-card" data-category="varkala">
+          <span class="taste-pick-emoji">🌊</span>
+          <span class="taste-pick-category">Sanctuary</span>
+          <h3 class="taste-pick-title">VARKALA</h3>
+          <p class="taste-pick-microcopy">Red cliffside vistas overlooking the rolling Arabian sea at golden twilight.</p>
+        </div>
+
+        <!-- Making Reels -->
+        <div class="taste-pick-card" data-category="reels">
+          <span class="taste-pick-emoji">🎥</span>
+          <span class="taste-pick-category">Creative Art</span>
+          <h3 class="taste-pick-title">MAKING REELS</h3>
+          <p class="taste-pick-microcopy">Curating visual stories, framing music, colors, and rhythm in vertical cinematic cuts.</p>
+        </div>
+
+        <!-- Chess -->
+        <div class="taste-pick-card" data-category="chess">
+          <span class="taste-pick-emoji">♟️</span>
+          <span class="taste-pick-category">Strategy</span>
+          <h3 class="taste-pick-title">PLAYING CHESS</h3>
+          <p class="taste-pick-microcopy">Quiet calculation, deep focus, and finding power in deliberate, thoughtful steps.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 16: Selvi Radio
+         ========================================================================== -->
+    <section class="selvi-radio-section" id="chapter-radio" aria-label="Selvi Radio Soundtrack Experience">
+      <div class="radio-player-card">
+        <div class="radio-album-art">
+          <img src="assets/selvi/fashion/selvi-burgundy-cherry-2.png" alt="Selvi Original Soundtrack Album Cover" loading="lazy">
+          <div class="radio-spinning-vinyl-badge">✦</div>
+        </div>
+
+        <div class="radio-details-col">
+          <span class="radio-tag">SELVI RADIO // ORIGINAL SOUNDTRACK</span>
+          <h2 class="radio-song-title">THE LIFE OF RAM</h2>
+          <p class="radio-artist-subtitle">Govind Vasantha • Pradeep Kumar ('96 • Vijay Sethupathi) 🎧</p>
+
+          <!-- Waveform Canvas -->
+          <div class="waveform-canvas-box">
+            <canvas id="radioWaveformCanvas" width="500" height="60"></canvas>
+          </div>
+
+          <div class="radio-progress-row">
+            <span class="time-stamp" id="radioCurrentTime">0:00</span>
+            <div class="radio-progress-track" id="radioProgressTrack">
+              <div class="radio-progress-fill-bar" id="radioProgressBar"></div>
+            </div>
+            <span class="time-stamp" id="radioDuration">3:24</span>
+          </div>
+
+          <div class="radio-controls-row">
+            <div class="radio-main-btns">
+              <button class="btn-radio-play js-audio-play-toggle" aria-label="Play Soundtrack">
+                <span class="play-icon">▶</span>
+                <span>PLAY</span>
+              </button>
+              <button class="js-audio-mute-toggle" style="font-size:1.2rem;" aria-label="Toggle Mute">🔊</button>
+            </div>
+
+            <div class="radio-volume-group">
+              <label for="radioVolumeSlider" style="font-size:0.75rem; color:var(--text-muted);">VOL</label>
+              <input type="range" class="volume-slider" id="radioVolumeSlider" min="0" max="1" step="0.05" value="0.75">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 17: Mood Shuffle
+         ========================================================================== -->
+    <div class="mood-shuffle-bar-container">
+      <button class="btn-shuffle-mood" id="btnMoodShuffle">
+        <span>✨</span>
+        <span>SHUFFLE MY MOOD</span>
+      </button>
+    </div>
+
+    <!-- ==========================================================================
+         Section 18, 19, 20: Dream Board, Modelling & Business Dream
+         ========================================================================== -->
+    <section class="dreamboard-section" id="chapter-dreamboard" aria-label="Future Aspirations">
+      <div class="dreamboard-header">
+        <span class="crossed-out-status">CURRENTLY WATCHING</span>
+        <h2 class="dreamboard-heading">COMING SOON</h2>
+        <p class="dreamboard-subhead">“The best seasons haven't aired yet.”</p>
+      </div>
+
+      <div class="dream-posters-grid">
+        <!-- Poster 01: Modelling -->
+        <div class="dream-poster-card">
+          <div class="dream-poster-img-wrap">
+            <img src="assets/selvi/fashion/selvi-fairy-gown.png" alt="Modelling Vision Poster" loading="lazy">
+            <span class="dream-status-tag">IN DEVELOPMENT</span>
+            <div class="dream-poster-scrim"></div>
+          </div>
+          <div class="dream-poster-content">
+            <div class="dream-number-pill">SEASON PREVIEW // 01</div>
+            <h3 class="dream-card-title">MODELLING</h3>
+            <p class="dream-card-desc">High fashion editorial frames, couture silhouettes, and runway presence.</p>
+          </div>
+        </div>
+
+        <!-- Poster 02: Business -->
+        <div class="dream-poster-card">
+          <div class="dream-poster-img-wrap">
+            <img src="assets/selvi/fashion/selvi-burgundy-cowl-skirt.png" alt="Business Founder Vision Poster" loading="lazy">
+            <span class="dream-status-tag">IN DEVELOPMENT</span>
+            <div class="dream-poster-scrim"></div>
+          </div>
+          <div class="dream-poster-content">
+            <div class="dream-number-pill">SEASON PREVIEW // 02</div>
+            <h3 class="dream-card-title">MY OWN BUSINESS</h3>
+            <p class="dream-card-desc">An independent venture designed, built, and directed on her own terms.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 19: Mock Editorial Cover -->
+      <div class="mock-editorial-cover">
+        <div class="mock-cover-tag">SELVI // FUTURE ISSUE</div>
+        <p class="mock-cover-headline">“ONE DAY, THE CAMERA WON'T JUST BE FOR REELS.”</p>
+        <span style="font-size:0.85rem; color:var(--accent-champagne); font-weight:700; letter-spacing:0.2em; text-transform:uppercase;">MODELLING ERA</span>
+      </div>
+
+      <!-- Section 20: Business Locked Card -->
+      <div class="business-locked-card">
+        <div class="locked-card-row">
+          <span class="locked-label">PROJECT</span>
+          <span class="locked-value">CONFIDENTIAL [UNKNOWN]</span>
+        </div>
+        <div class="locked-card-row">
+          <span class="locked-label">FOUNDER</span>
+          <span class="locked-value">SELVI</span>
+        </div>
+        <div class="locked-card-row">
+          <span class="locked-label">STATUS</span>
+          <span class="locked-value" style="color:var(--accent-champagne);">DREAMING → BUILDING</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 22: “A Day in Her World”
+         ========================================================================== -->
+    <section class="day-in-her-world-section" id="chapter-day" aria-label="A Day in Her World">
+      <div class="day-sequence-header">
+        <h2 class="shelf-title" style="justify-content:center;">
+          <span>A DAY IN HER WORLD</span>
+        </h2>
+        <span class="shelf-subtitle">Curated Rhythm • Not by the Clock</span>
+      </div>
+
+      <div class="day-sequence-scroll">
+        <div class="day-step-card">
+          <span class="step-number">STEP 01</span>
+          <span class="step-emoji">✨</span>
+          <h3 class="step-title">GET READY</h3>
+          <p class="step-desc">Setting the tone with fresh energy and intention.</p>
+        </div>
+
+        <div class="day-step-card">
+          <span class="step-number">STEP 02</span>
+          <span class="step-emoji">👗</span>
+          <h3 class="step-title">PICK A LOOK</h3>
+          <p class="step-desc">Dressing up and experimenting with silhouettes.</p>
+        </div>
+
+        <div class="day-step-card">
+          <span class="step-number">STEP 03</span>
+          <span class="step-emoji">🎥</span>
+          <h3 class="step-title">MAKE A REEL</h3>
+          <p class="step-desc">Framing aesthetics, angles, and natural lighting.</p>
+        </div>
+
+        <div class="day-step-card">
+          <span class="step-number">STEP 04</span>
+          <span class="step-emoji">🍛</span>
+          <h3 class="step-title">BIRYANI</h3>
+          <p class="step-desc">The non-negotiable comfort and pure flavor.</p>
+        </div>
+
+        <div class="day-step-card">
+          <span class="step-number">STEP 05</span>
+          <span class="step-emoji">🎧</span>
+          <h3 class="step-title">TAMIL MUSIC</h3>
+          <p class="step-desc">Evergreen melodies that play on eternal repeat.</p>
+        </div>
+
+        <div class="day-step-card">
+          <span class="step-number">STEP 06</span>
+          <span class="step-emoji">♟️</span>
+          <h3 class="step-title">CHESS</h3>
+          <p class="step-desc">One move at a time. Quiet focus and strategy.</p>
+        </div>
+
+        <div class="day-step-card">
+          <span class="step-number">STEP 07</span>
+          <span class="step-emoji">🌙</span>
+          <h3 class="step-title">SOLO TIME</h3>
+          <p class="step-desc">Sometimes being alone is peaceful.</p>
+        </div>
+
+        <div class="day-step-card">
+          <span class="step-number">STEP 08</span>
+          <span class="step-emoji">♡</span>
+          <h3 class="step-title">DREAM BIGGER</h3>
+          <p class="step-desc">Modelling. Entrepreneurship. The road ahead.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 23: Memory Wall (Camera Roll Masonry)
+         ========================================================================== -->
+    <section class="memory-wall-section" id="chapter-memorywall" aria-label="Visual Archive Wall">
+      <div class="memory-wall-header">
+        <h2 class="shelf-title" style="justify-content:center;">
+          <span>MY CAMERA ROLL, BUT CINEMATIC.</span>
+        </h2>
+        <span class="shelf-subtitle">Snapshots of Moments & Fits</span>
+      </div>
+
+      <div class="memory-wall-grid">
+        <div class="masonry-brick">
+          <img src="assets/selvi/portraits/selvi-heart-smile.png" alt="Selvi Heart Smile" loading="lazy">
+          <div class="brick-hover-overlay"><span class="brick-caption">Original Smile</span></div>
+        </div>
+
+        <div class="masonry-brick">
+          <img src="assets/selvi/fashion/selvi-purple-saree.png" alt="Selvi Silk Saree" loading="lazy">
+          <div class="brick-hover-overlay"><span class="brick-caption">Silk Drapes & Jhumkas</span></div>
+        </div>
+
+        <div class="masonry-brick">
+          <img src="assets/selvi/fashion/selvi-burgundy-cherry-2.png" alt="Selvi Corset" loading="lazy">
+          <div class="brick-hover-overlay"><span class="brick-caption">Cherry Tiered Silhouette</span></div>
+        </div>
+
+        <div class="masonry-brick">
+          <img src="assets/selvi/fashion/selvi-fairy-gown.png" alt="Selvi Fairy Gown" loading="lazy">
+          <div class="brick-hover-overlay"><span class="brick-caption">Butterfly Tulle Volume</span></div>
+        </div>
+
+        <div class="masonry-brick">
+          <img src="assets/selvi/portraits/selvi-cottagecore-green.png" alt="Selvi Green Dress" loading="lazy">
+          <div class="brick-hover-overlay"><span class="brick-caption">Summer Cottage Bloom</span></div>
+        </div>
+
+        <div class="masonry-brick">
+          <img src="assets/selvi/fashion/selvi-bronze-kurti.png" alt="Selvi Bronze Kurti" loading="lazy">
+          <div class="brick-hover-overlay"><span class="brick-caption">Thread Embroidered Silk</span></div>
+        </div>
+
+        <div class="masonry-brick">
+          <img src="assets/selvi/portraits/selvi-black-ribbed-tying-hair.png" alt="Selvi Tying Hair" loading="lazy">
+          <div class="brick-hover-overlay"><span class="brick-caption">Effortless Updo</span></div>
+        </div>
+
+        <div class="masonry-brick">
+          <img src="assets/selvi/fashion/selvi-red-palmtree.png" alt="Selvi Palm Shirt" loading="lazy">
+          <div class="brick-hover-overlay"><span class="brick-caption">Crimson Palm Shirt</span></div>
+        </div>
+
+        <div class="masonry-brick">
+          <img src="assets/selvi/fashion/selvi-purple-salwar.png" alt="Selvi Purple Salwar" loading="lazy">
+          <div class="brick-hover-overlay"><span class="brick-caption">Heritage Kurti & Dupatta</span></div>
+        </div>
+
+        <div class="masonry-brick">
+          <img src="assets/selvi/portraits/selvi-pink-post.png" alt="Selvi Pink Post" loading="lazy">
+          <div class="brick-hover-overlay"><span class="brick-caption">Sunlit Promenade</span></div>
+        </div>
+
+        <div class="masonry-brick">
+          <img src="assets/selvi/fashion/selvi-cream-casual.png" alt="Selvi Cream Casual" loading="lazy">
+          <div class="brick-hover-overlay"><span class="brick-caption">Wide-Leg Ease</span></div>
+        </div>
+
+        <div class="masonry-brick">
+          <img src="assets/selvi/varkala/varkala-cliff-sunset.jpg" alt="Varkala Sunset" loading="lazy">
+          <div class="brick-hover-overlay"><span class="brick-caption">Varkala Sunset Shore</span></div>
+        </div>
+
+        <div class="masonry-brick">
+          <img src="assets/selvi/fashion/selvi-burgundy-cowl-skirt.png" alt="Selvi Cowl Skirt" loading="lazy">
+          <div class="brick-hover-overlay"><span class="brick-caption">Burgundy Cowl & Midi</span></div>
+        </div>
+
+        <div class="masonry-brick">
+          <img src="assets/selvi/fashion/selvi-black-floral-maxi.png" alt="Selvi Black Maxi" loading="lazy">
+          <div class="brick-hover-overlay"><span class="brick-caption">Black Floral Silhouette</span></div>
+        </div>
+
+        <div class="masonry-brick">
+          <img src="assets/selvi/fashion/selvi-pink-mesh.png" alt="Selvi Pink Mesh" loading="lazy">
+          <div class="brick-hover-overlay"><span class="brick-caption">Mesh Rose Top</span></div>
+        </div>
+
+        <div class="masonry-brick">
+          <img src="assets/selvi/portraits/selvi-flowers-back.png" alt="Selvi Bougainvillea" loading="lazy">
+          <div class="brick-hover-overlay"><span class="brick-caption">Bougainvillea Contemplation</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 24: Future Self (The Climax)
+         ========================================================================== -->
+    <section class="future-self-climax-section" id="chapter-future" aria-label="Message to Future Self">
+      <div class="future-crossfade-canvas">
+        <img class="crossfade-img active" src="assets/selvi/fashion/selvi-fairy-gown.png" alt="Vision 1">
+        <img class="crossfade-img" src="assets/selvi/varkala/varkala-cliff-sunset.jpg" alt="Vision 2">
+        <img class="crossfade-img" src="assets/selvi/fashion/selvi-burgundy-cherry-2.png" alt="Vision 3">
+        <img class="crossfade-img" src="assets/selvi/portraits/selvi-black-ribbed-profile.png" alt="Vision 4">
+      </div>
+
+      <div class="future-content-box">
+        <p class="future-prelude-text">
+          “To the version of me who hasn't arrived yet…”
+        </p>
+
+        <h2 class="future-dominating-text">
+          YOUR DREAMS<br>ARE WAITING
+        </h2>
+
+        <p class="future-quote-reminder">
+          “Keep going, your dreams are waiting.”
+        </p>
+
+        <span class="future-becoming-tag">Still becoming.</span>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 25 & 26: Fake Credits & Next Season Teaser
+         ========================================================================== -->
+    <footer class="credits-roll-section" id="chapter-credits" role="contentinfo">
+      <div class="credits-container">
+        <h2 class="credits-super-title">SELVI</h2>
+        <h3 class="credits-super-subtitle">IN MY OWN FRAME</h3>
+
+        <div class="credits-role-block">
+          <div class="credits-role-title">STARRING</div>
+          <div class="credits-role-name">Tamilselvi</div>
+        </div>
+
+        <div class="credits-role-block">
+          <div class="credits-role-title">ALSO STARRING</div>
+          <div class="credits-starring-items">
+            <span>Biryani 🍛</span>
+            <span>Tamil Music 🎵</span>
+            <span>Reels 🎬</span>
+            <span>Chess ♟️</span>
+            <span>Varkala 🌊</span>
+            <span>Different Looks ✨</span>
+            <span>Peaceful Solitude 🌙</span>
+          </div>
+        </div>
+
+        <div class="credits-role-block">
+          <div class="credits-role-title">DREAM SEQUENCES</div>
+          <div class="credits-starring-items">
+            <span>Modelling</span>
+            <span>Entrepreneurship</span>
+          </div>
+        </div>
+
+        <div class="credits-role-block">
+          <div class="credits-role-title">DIRECTED BY</div>
+          <div class="credits-directed-line">Her Own Choices</div>
+        </div>
+
+        <p class="credits-final-note">“This season is still being written.”</p>
+
+        <!-- Section 29: Hidden Easter Egg Piece -->
+        <div style="margin-top: 32px;">
+          <span class="hidden-easter-egg-trigger" id="easterEggChessPiece" title="A tiny mystery...">♟️</span>
+        </div>
+
+        <!-- Section 26: Next Season Teaser -->
+        <div class="next-season-box">
+          <div class="next-season-wait">WAIT...</div>
+          <div class="next-season-sub">There's more.</div>
+
+          <div class="next-season-cards-row">
+            <div class="next-season-card">
+              <div class="next-era-badge">NEXT SEASON</div>
+              <h4 class="next-era-title">MODEL ERA ✨</h4>
+              <span class="next-era-status">COMING SOON</span>
+            </div>
+
+            <div class="next-season-card">
+              <div class="next-era-badge">NEXT SEASON</div>
+              <h4 class="next-era-title">FOUNDER ERA 💼</h4>
+              <span class="next-era-status">COMING SOON</span>
+            </div>
+          </div>
+
+          <p class="next-season-final-quote">
+            “The best part? She hasn't become everything she's going to be yet.”
+          </p>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- ==========================================================================
+       Section 27: Selvi Remote (Floating Controller Button & Modal)
+       ========================================================================== -->
+  <button class="floating-remote-trigger" id="remoteFloatingTrigger" aria-label="Open Remote Controller">
+    <span>📺</span>
+    <span>SELVI REMOTE</span>
+  </button>
+
+  <div class="selvi-remote-modal" id="selviRemoteModal" role="dialog" aria-modal="true" aria-labelledby="remoteTitle">
+    <div class="remote-panel-box">
+      <div class="remote-header">
+        <h3 class="remote-header-title" id="remoteTitle">CHOOSE A CHAPTER</h3>
+        <button class="remote-close-btn" id="remoteCloseBtn" aria-label="Close Remote">✕</button>
+      </div>
+
+      <div class="remote-chapters-list">
+        <button class="remote-chapter-btn" data-target="chapter-hero">
+          <span>▶</span><span>Just Selvi</span>
+        </button>
+        <button class="remote-chapter-btn" data-target="chapter-solo">
+          <span>🌙</span><span>Solo Mode</span>
+        </button>
+        <button class="remote-chapter-btn" data-target="chapter-varkala">
+          <span>🌊</span><span>Varkala</span>
+        </button>
+        <button class="remote-chapter-btn" data-target="chapter-reels">
+          <span>🎬</span><span>Reel Life</span>
+        </button>
+        <button class="remote-chapter-btn" data-target="chapter-lookbook">
+          <span>✨</span><span>Lookbook</span>
+        </button>
+        <button class="remote-chapter-btn" data-target="chapter-college">
+          <span>🎓</span><span>College</span>
+        </button>
+        <button class="remote-chapter-btn" data-target="chapter-chess">
+          <span>♟️</span><span>Chess</span>
+        </button>
+        <button class="remote-chapter-btn" data-target="chapter-radio">
+          <span>🎧</span><span>Music</span>
+        </button>
+        <button class="remote-chapter-btn" data-target="chapter-dreamboard">
+          <span>♡</span><span>Dreams</span>
+        </button>
+        <button class="remote-chapter-btn" data-target="chapter-credits">
+          <span>🚀</span><span>Next Season</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       Section 29: Hidden Easter Egg Toast Notification
+       ========================================================================== -->
+  <div class="easter-egg-toast" id="easterEggToast" role="alert">
+    <div class="egg-icon">♟️</div>
+    <div class="egg-title">“Your move, Selvi.”</div>
+    <div class="egg-quote">“Keep going. Your dreams are waiting.”</div>
+  </div>
+
+  <!-- ==========================================================================
+       Global Media Lightbox & Reel Expanded Viewer
+       ========================================================================== -->
+  <div class="global-media-lightbox" id="globalLightbox" role="dialog" aria-modal="true">
+    <button class="lightbox-close-btn" id="lightboxCloseBtn" aria-label="Close Preview">✕</button>
+    <button class="lightbox-nav-btn lightbox-prev" id="lightboxPrevBtn" aria-label="Previous">❮</button>
+    <button class="lightbox-nav-btn lightbox-next" id="lightboxNextBtn" aria-label="Next">❯</button>
+
+    <div class="lightbox-content-box">
+      <div class="lightbox-media-container">
+        <img class="lightbox-img" id="lightboxImg" src="" alt="Lightbox Media" style="display:none;">
+        <video class="lightbox-video" id="lightboxVideo" controls playsinline style="display:none;"></video>
+      </div>
+      <p class="lightbox-caption-text" id="lightboxCaption"></p>
+    </div>
+  </div>
+
+  <!-- My List Drawer Modal -->
+  <div class="mylist-drawer-modal" id="myListDrawer" role="dialog" aria-modal="true">
+    <div class="mylist-drawer-content">
+      <div class="mylist-header">
+        <h3 class="mylist-title">MY LIST</h3>
+        <button id="myListCloseBtn" style="font-size:1.4rem;">✕</button>
+      </div>
+      <div id="myListItemsContainer">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Docked Mini Music Player (Persistent Bottom Bar) -->
+  <div class="docked-mini-player" id="dockedMusicPlayer" role="region" aria-label="Music Player">
+    <div class="mini-track-info">
+      <img class="mini-thumb" src="assets/selvi/fashion/selvi-burgundy-cherry-2.png" alt="Soundtrack Thumbnail">
+      <div>
+        <div class="mini-text-title">THE LIFE OF RAM</div>
+        <div class="mini-text-artist">Govind Vasantha • Pradeep Kumar • <span id="miniTimeCurrent">0:00</span></div>
+      </div>
+    </div>
+
+    <div class="mini-controls">
+      <button class="mini-play-btn" id="miniPlayerToggle" aria-label="Play/Pause">▶</button>
+      <button class="js-audio-mute-toggle" aria-label="Mute">🔊</button>
+    </div>
+  </div>
+
+  <!-- Core Data & Application Scripts -->
+  <script src="assets/js/selviData.js"></script>
+  <script src="assets/js/audioManager.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
